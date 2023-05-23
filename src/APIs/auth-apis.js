@@ -1,11 +1,15 @@
+
+
 // POST
 export const LoginAction = async (userData) => {
     if (!userData) {
         return { status: 'fail' };
     }
     const response = await fetch('https://videosharingbackend-production.up.railway.app/api/v1/users/signin', {
+        crossDomain:true,
+
         method: 'POST',
-        mode: "cors",
+        // mode: "cors",
         body: JSON.stringify(userData),
         headers: {
             'Content-Type': 'application/json',
@@ -21,6 +25,8 @@ export const RegisterAction = async (userData) => {
         return { status: 'fail' };
     }
     const response = await fetch('https://videosharingbackend-production.up.railway.app/api/v1/users/signup', {
+        crossDomain:true,
+
         method: 'POST',
         body: JSON.stringify(userData),
         headers: {
@@ -37,6 +43,8 @@ export const RegisterActionFormDataVersion = async (userFormData) => {
         return { status: 'fail' };
     }
     const response = await fetch('https://videosharingbackend-production.up.railway.app/api/v1/users/signup', {
+          crossDomain:true,
+
         method: 'POST',
         body: userFormData,
     });
