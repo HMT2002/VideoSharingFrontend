@@ -14,9 +14,7 @@ const HomePage = () => {
     "Ẩm thực",
     "Du lịch",
   ];
-
   const [threads, setThreads] = useState([]); // all threads in loaded in homepage
-
   const fetchThreadsHandler = useCallback(async () => {
     try {
       const response = await GETAllThreadAction();
@@ -24,7 +22,6 @@ const HomePage = () => {
       if (response.status === "success") {
         setThreads(response.data.threads);
       }
-
       const getcookietoken = await LoginAction({
         account: "enteredAccount",
         password: "enteredPassword",
