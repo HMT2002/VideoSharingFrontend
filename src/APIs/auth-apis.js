@@ -5,7 +5,7 @@ export const LoginAction = async (userData) => {
     if (!userData) {
         return { status: 'fail' };
     }
-    const response = await fetch('https://videosharingbackend-production.up.railway.app/api/v1/users/signin', {
+    const response = await fetch('/api/v1/users/signin', {
         crossDomain:true,
 
         method: 'POST',
@@ -24,7 +24,7 @@ export const RegisterAction = async (userData) => {
     if (!userData) {
         return { status: 'fail' };
     }
-    const response = await fetch('https://videosharingbackend-production.up.railway.app/api/v1/users/signup', {
+    const response = await fetch('/api/v1/users/signup', {
         crossDomain:true,
 
         method: 'POST',
@@ -42,7 +42,7 @@ export const RegisterActionFormDataVersion = async (userFormData) => {
     if (!userFormData) {
         return { status: 'fail' };
     }
-    const response = await fetch('https://videosharingbackend-production.up.railway.app/api/v1/users/signup', {
+    const response = await fetch('/api/v1/users/signup', {
           crossDomain:true,
 
         method: 'POST',
@@ -51,13 +51,12 @@ export const RegisterActionFormDataVersion = async (userFormData) => {
     const data = await response.json();
     return data;
 };
-
 // GET
 export const CheckTokenAction = async (token) => {
     if (!token) {
         return { status: 'fail' };
     }
-    const response = await fetch('https://videosharingbackend-production.up.railway.app/api/v1/auth/check-token', {
+    const response = await fetch('/api/v1/auth/check-token', {
         method: 'GET',
         headers: {
             // 'Content-Type': 'application/json',

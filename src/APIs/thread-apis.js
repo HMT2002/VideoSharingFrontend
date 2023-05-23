@@ -33,7 +33,7 @@ export const POSTThreadAction = async (thread, token) => {
     return { status: "fail" };
   }
 
-  const response = await fetch("https://videosharingbackend-production.up.railway.app/api/v1/threads", {
+  const response = await fetch("/api/v1/threads", {
     crossDomain:true,
     mode: "cors", // no-cors, *cors, same-origin
 
@@ -55,7 +55,7 @@ export const POSTVideoUploadAction = async (formData) => {
   if (!formData) {
     return { status: "fail" };
   }
-  const response = await fetch("https://videosharingbackend-production.up.railway.app/api/v1/threads/upload-video", {
+  const response = await fetch("/api/v1/threads/upload-video", {
     crossDomain:true,
     mode: "cors", // no-cors, *cors, same-origin
 
