@@ -27,6 +27,7 @@ export const GETAllThreadAction = async () => {
       Authorization: storedToken,
     },
   });
+  console.log(response)
   if (!response.status || response.status === "error") {
     throw new Error("Something went wrong!");
   }
