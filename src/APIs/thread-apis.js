@@ -20,19 +20,25 @@ export const GETThreadAction = async (slug) => {
 
 export const GETAllThreadAction = async () => {
   const storedToken = localStorage.getItem("token");
-  const response = await fetch("/api/v1/threads", {
+  const response = await fetch("https://videosharingbackend-production.up.railway.app/api/v1/threads", {
     method: "GET",
     headers: {
       // 'Content-Type': 'application/json',
       Authorization: storedToken,
     },
   });
-  console.log(response)
+  console.log("response");
   if (!response.status || response.status === "error") {
-    throw new Error("Something went wrong!");
+    console.log("errpero start")
+
+    console.log(response);
+    const data = await response.json();
+console.log(data);
+    console.log("errpero")
+    return { status: "fail" };
   }
   const data = await response.json();
-  //   console.log(data);
+  console.log(data);
   return data;
 };
 export const POSTThreadAction = async (thread, token) => {
@@ -40,7 +46,7 @@ export const POSTThreadAction = async (thread, token) => {
     return { status: "fail" };
   }
 
-  const response = await fetch("/api/v1/threads", {
+  const response = await fetch("https://videosharingbackend-production.up.railway.app/api/v1/threads", {
     method: "POST",
     body: JSON.stringify(thread),
     headers: {
@@ -57,7 +63,7 @@ export const POSTVideoUploadAction = async (formData) => {
   if (!formData) {
     return { status: "fail" };
   }
-  const response = await fetch("/api/v1/threads/upload-video", {
+  const response = await fetch("https://videosharingbackend-production.up.railway.app/api/v1/threads/upload-video", {
     method: "POST",
     body: formData,
   });
