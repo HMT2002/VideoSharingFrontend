@@ -1,5 +1,4 @@
 import axios from "axios";
-const baseurl = "https://videosharingbackend-production.up.railway.app/";
 
 export const GETThreadAction = async (slug) => {
   if (!slug) {
@@ -15,7 +14,6 @@ export const GETThreadAction = async (slug) => {
 };
 
 export const GETAllThreadAction = async () => {
-  const storedToken = localStorage.getItem("token");
   const response = await axios.get("/api/v1/threads",{ 'Access-Control-Allow-Origin': '*' });
   if (!response.status || response.status === "error") {
     console.log(response);
