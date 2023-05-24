@@ -5,7 +5,7 @@ export const GETThreadAction = async (slug) => {
     return { status: "fail" };
   }
   // const storedToken = localStorage.getItem('token');
-  const response = await axios.get("/api/v1/threads/" + slug,{ 'Access-Control-Allow-Origin': '*' });
+  const response = await axios.get("/api/v1/threads/" + slug,{ 'Access-Control-Allow-Origin': '*',baseURL: 'https://videosharingbackend-production.up.railway.app' });
   if (!response.status || response.status === "error") {
     throw new Error("Something went wrong!");
   }
@@ -14,8 +14,16 @@ export const GETThreadAction = async (slug) => {
 };
 
 export const GETAllThreadAction = async () => {
-  const response = await axios.get("/api/v1/threads",{ 'Access-Control-Allow-Origin': '*' });
-  if (!response.status || response.status === "error") {
+  const response = await axios.get("/api/v1/threads",
+  {
+    baseURL: 'https://videosharingbackend-production.up.railway.app',
+    mode: 'no-cors',
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  });
+
+  if (!response.status || response.status === "error") {  
     console.log(response);
     const data = await response.json();
     console.log(data);
